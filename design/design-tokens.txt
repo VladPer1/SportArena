@@ -1,0 +1,22 @@
+-- DESIGN TOKENS --
+
+-- COLORS (Selection Colors) --
+Background-Body:   #F4F4F4 (100%)
+Header-Footer-BG:  #1A2E3F (100%)
+Accent-Orange:     #FF6B35 (100%)
+Dark-Gray-Text:    #333333 (100%)
+Meta-Gray:         #666666 (100%)
+White-Base:        #FFFFFF (100%)
+Border-Light:      #EEEEEE (100%)
+Border-Items:      #F0F0F0 (100%)
+
+-- TYPOGRAPHY --
+Header-Main:       Arial, Bold, 28px
+Section-Title:     Arial, Bold, 24px
+Body-Text:         Arial, Regular, 16px
+Meta-Small:        Arial, Regular, 14px
+
+-- SPACING & GRID --
+Container-Max:     1200px
+Grid-Gap:          30px
+Main-Padding:      40px
