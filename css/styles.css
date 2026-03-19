@@ -1,0 +1,30 @@
+@import 'variables.css';
+@import 'header.css';
+@import 'main.css';
+@import 'footer.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg-light);
+  color: var(--color-text-main);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.25rem; /* Гибкие отступы */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

@@ -1,0 +1,56 @@
+/* База для мобильных: всё в одну колонку */
+.main {
+  padding: 2rem 0;
+}
+
+.main__grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Одна колонка */
+  gap: 2rem;
+}
+
+/* Главная новость (БЭМ: block) */
+.main-news {
+  background: var(--color-white);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+}
+
+.main-news__title {
+  font-size: var(--fz-h1);
+  margin-bottom: 1rem;
+}
+
+/* Лента новостей (Flexbox внутри) */
+.news-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.news-card {
+  display: flex; /* Flex для выравнивания картинки и текста */
+  flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* ПЛАНШЕТ (от 768px) */
+@media (min-width: 768px) {
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки для новостей */
+  }
+}
+
+/* ДЕСКТОП (от 1024px) - Сложный макет Grid */
+@media (min-width: 1024px) {
+  .main__grid {
+    grid-template-columns: 2fr 1fr; /* Контент + Сайдбар */
+  }
+  
+  .main-news__title {
+    font-size: var(--fz-h1-desktop);
+  }
+}
