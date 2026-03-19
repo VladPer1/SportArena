@@ -1,0 +1,21 @@
+:root {
+  /* Цвета */
+  --color-primary: #1a1a2e;
+  --color-accent: #e63946;
+  --color-bg-light: #f4f4f9;
+  --color-white: #ffffff;
+  --color-text-main: #333333;
+  --color-text-muted: #666666;
+  --color-border: #e0e0e0;
+
+  /* Типографика (относительные единицы rem) */
+  --font-family: 'Helvetica Neue', Arial, sans-serif;
+  --fz-base: 1rem;      /* 16px */
+  --fz-h1: 1.5rem;      /* Для мобильных */
+  --fz-h1-desktop: 2.25rem;
+  
+  /* Размеры */
+  --container-width: 1200px;
+  --border-radius: 0.5rem;
+  --transition-speed: 0.3s;
+}

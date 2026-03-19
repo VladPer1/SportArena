@@ -1,0 +1,41 @@
+/* Mobile First: Стили для смартфона */
+.header {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 1rem 0;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Скрываем навигацию на мобилках для бургер-меню (упрощенно) */
+.nav {
+  display: none; 
+}
+
+/* Планшеты и Десктопы */
+@media (min-width: 768px) {
+  .nav {
+    display: block;
+  }
+  
+  .nav__list {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+  }
+
+  .nav__link {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color var(--transition-speed);
+  }
+
+  .nav__link:hover {
+    color: var(--color-accent);
+  }
+}
