@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SportArena — Главные спортивные события</title>
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/header.css" />
+    <script type="module" src="js/script.js"></script>
   </head>
   <body>
     <a href="#main" class="skip-link">Перейти к основному содержимому</a>
@@ -67,7 +64,6 @@
                 <h1 class="main-news__title" itemprop="name">
                   Футбольный матч ЦСКА — Спартак (РПЛ, 19-й тур)
                 </h1>
-
                 <div class="main-news__meta">
                   <span class="main-news__date">
                     <time itemprop="startDate" datetime="2026-02-27T19:00"
@@ -155,6 +151,7 @@
                     >
                   </div>
                 </article>
+
                 <article
                   class="news-card"
                   itemprop="itemListElement"
@@ -190,24 +187,58 @@
           >
             <section class="standings">
               <h2 class="sidebar__title">Таблица РПЛ</h2>
-              <div class="standings__list">
-                <div class="standings__item">
+              <div class="standings__controls">
+                <button class="standings__btn-sort" data-sort="team">
+                  По названию
+                </button>
+                <button class="standings__btn-sort" data-sort="points">
+                  По очкам
+                </button>
+              </div>
+              <div class="standings__list" id="standings-list">
+                <div class="standings__item" data-team="Зенит" data-points="39">
                   <span class="standings__position">1</span
                   ><span class="standings__team">Зенит</span
                   ><span class="standings__points">39</span>
                 </div>
-                <div class="standings__item">
+                <div
+                  class="standings__item"
+                  data-team="Краснодар"
+                  data-points="38"
+                >
                   <span class="standings__position">2</span
                   ><span class="standings__team">Краснодар</span
                   ><span class="standings__points">38</span>
                 </div>
-                <div class="standings__item">
+                <div
+                  class="standings__item"
+                  data-team="Динамо"
+                  data-points="35"
+                >
                   <span class="standings__position">3</span
                   ><span class="standings__team">Динамо</span
                   ><span class="standings__points">35</span>
                 </div>
               </div>
             </section>
+
+            <section class="voting standings">
+              <h2 class="sidebar__title">Лучший игрок матча</h2>
+              <div class="voting__options">
+                <button class="voting__btn" data-player="Akinfeev">
+                  Акинфеев (ЦСКА)
+                </button>
+                <button class="voting__btn" data-player="Promes">
+                  Промес (Спартак)
+                </button>
+              </div>
+              <p class="voting__result" id="vote-message"></p>
+            </section>
+
+            <div class="live-counter">
+              Матчей в эфире:
+              <span id="match-count" class="live-counter__value">3</span>
+            </div>
           </aside>
         </div>
       </div>

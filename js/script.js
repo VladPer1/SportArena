@@ -1,4 +1,8 @@
-console.log("Страница загружена!");
+import { initStandings } from "./components/standings.js";
+import { initFeatures } from "./components/features.js";
 
-const now = new Date();
-console.log("Страница загружена: " + now.toLocaleTimeString());
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("SportArena scripts initialized");
+  initStandings();
+  initFeatures();
+});
