@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SportArena — Главные спортивные события</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
     <script type="module" src="js/script.js"></script>
   </head>
   <body>
@@ -185,6 +186,14 @@
             itemscope
             itemtype="http://schema.org/WPSideBar"
           >
+            <section class="api-matches standings">
+              <h2 class="sidebar__title">Мировые события</h2>
+              <div id="api-matches-container">
+                <p style="padding: 10px; font-size: 0.8rem; color: #666">
+                  Загрузка данных...
+                </p>
+              </div>
+            </section>
             <section class="standings">
               <h2 class="sidebar__title">Таблица РПЛ</h2>
               <div class="standings__controls">
@@ -256,5 +265,14 @@
         </div>
       </div>
     </footer>
+    <template id="match-template">
+      <div class="api-match-item">
+        <div class="api-match__title" data-title></div>
+        <div class="api-match__meta">
+          <span class="api-match__competition" data-competition></span>
+          <span class="api-match__date" data-date></span>
+        </div>
+      </div>
+    </template>
   </body>
 </html>

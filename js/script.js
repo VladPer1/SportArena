@@ -1,7 +1,9 @@
 import { initStandings } from "./components/standings.js";
 import { initFeatures } from "./components/features.js";
+import { initApiService } from "./components/apiService.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+// Добавляем async перед скобками
+document.addEventListener("DOMContentLoaded", async () => {
   const allCards = document.querySelectorAll(".news-card");
   const mainHeader = document.querySelector(".header");
   const standingsList = document.getElementById("standings-list");
@@ -11,7 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
     header: mainHeader,
     container: standingsList,
   });
+
   console.log("SportArena scripts initialized");
+
   initStandings();
   initFeatures();
+
+  // Теперь await будет работать корректно
+  await initApiService();
 });
