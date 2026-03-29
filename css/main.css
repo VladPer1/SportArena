@@ -80,6 +80,12 @@
   color: var(--color-primary);
 }
 
+.standings__item.is-active {
+  background-color: var(--color-bg-light);
+  border-left: 3px solid var(--color-accent);
+  cursor: pointer;
+}
+
 .btn-sort,
 .voting__btn {
   background: var(--color-bg-light);
