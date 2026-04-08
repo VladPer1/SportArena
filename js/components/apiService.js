@@ -87,8 +87,16 @@ class FootballDataHandler {
   }
 
   sendNotification(text) {
-    if (Notification.permission === "granted") {
+    const alreadyShown = sessionStorage.getItem("notification_shown");
+
+    if (Notification.permission === "granted" && !alreadyShown) {
       new Notification("SportArena", { body: text });
+
+      // Помечаем, что в текущей сессии уведомление уже было
+      sessionStorage.setItem("notification_shown", "true");
+      console.log(
+        "Уведомление сохранено в SessionStorage (только для этой вкладки)",
+      );
     }
   }
 }
