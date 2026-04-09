@@ -2,7 +2,6 @@ import { initStandings } from "./components/standings.js";
 import { initFeatures } from "./components/features.js";
 import { initApiService } from "./components/apiService.js";
 
-// Добавляем async перед скобками
 document.addEventListener("DOMContentLoaded", async () => {
   const allCards = document.querySelectorAll(".news-card");
   const mainHeader = document.querySelector(".header");
@@ -19,6 +18,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   initStandings();
   initFeatures();
 
-  // Теперь await будет работать корректно
   await initApiService();
 });
