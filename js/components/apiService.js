@@ -10,7 +10,6 @@ class FootballDataHandler {
 
   async getMatchesData() {
     try {
-      // Синхронизация: сначала смотрим кэш
       let cachedData = getCache(this.cacheKey);
       if (cachedData) {
         console.log("Данные синхронизированы из LocalStorage");
@@ -19,7 +18,6 @@ class FootballDataHandler {
 
       console.log("Выполнение реального fetch запроса к Scorebat API...");
 
-      // Прямой запрос без прокси!
       const response = await fetch(this.apiUrl);
 
       if (!response.ok) {
@@ -28,11 +26,9 @@ class FootballDataHandler {
 
       const rawData = await response.json();
 
-      // Scorebat отдает массив в поле response
       if (rawData.response) {
         const formattedData = this.formatMatchesData(rawData.response);
 
-        // Сохраняем для синхронизации
         setCache(this.cacheKey, formattedData);
         this.sendNotification("Футбольные данные успешно обновлены!");
 
@@ -46,9 +42,8 @@ class FootballDataHandler {
   }
 
   formatMatchesData(rawData) {
-    // Берем первые 5 матчей и форматируем под наш интерфейс
     return rawData.slice(0, 5).map((item) => ({
-      title: item.title, // Например: "Arsenal - Liverpool"
+      title: item.title,
       competition: item.competition,
       date: new Date(item.date).toLocaleDateString(),
       thumbnail: item.thumbnail,
@@ -58,7 +53,6 @@ class FootballDataHandler {
   renderMatches(matches, container) {
     if (!container) return;
 
-    // Очищаем контейнер перед вставкой
     container.innerHTML = "";
 
     if (matches.length === 0) {
@@ -69,19 +63,15 @@ class FootballDataHandler {
       return;
     }
 
-    // Находим наш шаблон в HTML
     const template = document.getElementById("match-template");
 
     matches.forEach((m) => {
-      // Клонируем содержимое шаблона
       const clone = template.content.cloneNode(true);
 
-      // Наполняем клон данными через дата-атрибуты (чтобы не зависеть от классов)
       clone.querySelector("[data-title]").textContent = m.title;
       clone.querySelector("[data-competition]").textContent = m.competition;
       clone.querySelector("[data-date]").textContent = m.date;
 
-      // Вставляем готовую карточку в контейнер
       container.appendChild(clone);
     });
   }
@@ -92,7 +82,6 @@ class FootballDataHandler {
     if (Notification.permission === "granted" && !alreadyShown) {
       new Notification("SportArena", { body: text });
 
-      // Помечаем, что в текущей сессии уведомление уже было
       sessionStorage.setItem("notification_shown", "true");
       console.log(
         "Уведомление сохранено в SessionStorage (только для этой вкладки)",
