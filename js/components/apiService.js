@@ -1,16 +1,16 @@
 // apiService.js
-import { setCache, getCache } from "../utils/helpers.js";
+import { setLocalCache, getLocalCache } from "../utils/localStorage.js";
+import { setSessionFlag, getSessionFlag } from "../utils/sessionStorage.js";
 
 class FootballDataHandler {
   constructor() {
-    // Реальное API со свободным доступом (видео и счета матчей)
     this.apiUrl = "https://www.scorebat.com/video-api/v3/";
     this.cacheKey = "football_real_data_v15";
   }
 
   async getMatchesData() {
     try {
-      let cachedData = getCache(this.cacheKey);
+      let cachedData = getLocalCache(this.cacheKey);
       if (cachedData) {
         console.log("Данные синхронизированы из LocalStorage");
         return cachedData;
@@ -29,7 +29,7 @@ class FootballDataHandler {
       if (rawData.response) {
         const formattedData = this.formatMatchesData(rawData.response);
 
-        setCache(this.cacheKey, formattedData);
+        setLocalCache(this.cacheKey, formattedData);
         this.sendNotification("Футбольные данные успешно обновлены!");
 
         return formattedData;
@@ -37,7 +37,7 @@ class FootballDataHandler {
       return [];
     } catch (error) {
       console.error(`Ошибка загрузки: ${error.message}`);
-      return getCache(this.cacheKey) || [];
+      return getLocalCache(this.cacheKey) || [];
     }
   }
 
@@ -77,12 +77,12 @@ class FootballDataHandler {
   }
 
   sendNotification(text) {
-    const alreadyShown = sessionStorage.getItem("notification_shown");
+    const alreadyShown = getSessionFlag("notification_shown");
 
     if (Notification.permission === "granted" && !alreadyShown) {
       new Notification("SportArena", { body: text });
 
-      sessionStorage.setItem("notification_shown", "true");
+      setSessionFlag("notification_shown", "true");
       console.log(
         "Уведомление сохранено в SessionStorage (только для этой вкладки)",
       );
